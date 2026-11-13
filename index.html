@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Wind Labs — Where Innovation Takes Flight</title>
+<meta name="description" content="The Wind Labs trains the next generation of innovators in aeromodelling and drone technology — workshops, courses, lab setups, airshows and drone solutions.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Saira:wght@500;600;700;800&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#132f54; --navy-2:#0c1f39; --orange:#f67f2f; --orange-2:#e0651a; --amber:#ffb067;
+  --ink:#1b2433; --muted:#5a6475; --paper:#f7f4ee; --card:#ffffff; --line:#e6e0d6;
+  --radius:14px; --wrap:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{margin:0;font-family:"Source Sans 3",system-ui,sans-serif;font-size:18px;line-height:1.6;color:var(--ink);background:var(--paper)}
+img,video{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3,h4{font-family:Saira,system-ui,sans-serif;line-height:1.12;margin:0 0 .5em;color:var(--navy);letter-spacing:-.01em}
+h2{font-size:clamp(30px,4.2vw,46px);font-weight:800}
+h3{font-size:22px;font-weight:700}
+p{margin:0 0 1em}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+section{padding:96px 0}
+.eyebrow{font-family:Saira,system-ui,sans-serif;font-weight:700;font-size:14px;letter-spacing:.16em;text-transform:uppercase;color:var(--orange-2);margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:28px;height:3px;background:var(--orange);border-radius:2px}
+.lede{font-size:20px;color:var(--muted);max-width:720px}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:50;background:rgba(247,244,238,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand img{width:44px;height:44px;border-radius:8px;object-fit:cover}
+.brand b{font-family:Saira,system-ui,sans-serif;font-weight:800;color:var(--navy);font-size:19px;letter-spacing:.02em}
+.nav ul{list-style:none;display:flex;gap:26px;margin:0;padding:0}
+.nav ul a{text-decoration:none;font-weight:600;font-size:16px;color:var(--navy)}
+.nav ul a:hover{color:var(--orange-2)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:999px;font-weight:700;font-size:16px;text-decoration:none;border:2px solid transparent;transition:transform .15s,background .15s}
+.btn:hover{transform:translateY(-1px)}
+.btn-primary{background:var(--orange);color:#fff}
+.btn-primary:hover{background:var(--orange-2)}
+.btn-ghost{border-color:rgba(255,255,255,.55);color:#fff}
+.btn-ghost:hover{background:rgba(255,255,255,.1)}
+.nav .btn{padding:9px 18px;font-size:15px}
+.menu-btn{display:none;background:none;border:0;font-size:26px;color:var(--navy);cursor:pointer}
+
+/* HERO */
+.hero{position:relative;color:#fff;padding:0;min-height:min(86vh,760px);display:flex;align-items:flex-end;overflow:hidden;background:var(--navy-2)}
+.hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,rgba(12,31,57,.96) 0%,rgba(12,31,57,.75) 45%,rgba(246,127,47,.25) 100%)}
+.hero .wrap{position:relative;z-index:1;padding-top:120px;padding-bottom:88px;width:100%}
+.hero h1{color:#fff;font-size:clamp(44px,7.4vw,92px);font-weight:800;letter-spacing:-.02em;margin-bottom:10px}
+.hero h1 span{color:var(--orange)}
+.hero .tag{font-family:Saira,system-ui,sans-serif;font-weight:600;letter-spacing:.24em;text-transform:uppercase;font-size:15px;color:var(--amber);margin-bottom:20px}
+.hero p{font-size:21px;max-width:620px;color:#dfe6f0}
+.hero .ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
+.contrail{position:absolute;right:-60px;top:80px;width:520px;opacity:.25;z-index:1;pointer-events:none}
+
+/* STATS */
+.stats{background:var(--navy);color:#fff;padding:0}
+.stats .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+.stat{padding:30px 22px;border-left:1px solid rgba(255,255,255,.12)}
+.stat:first-child{border-left:0}
+.stat b{display:block;font-family:Saira,system-ui,sans-serif;font-weight:800;font-size:40px;color:var(--orange);line-height:1}
+.stat span{font-size:15px;color:#c7d2e2}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:64px;align-items:center}
+.vision{display:grid;gap:14px;margin-top:28px}
+.vision li{list-style:none;display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px}
+.vision ul{padding:0;margin:0}
+.vision .ic{width:44px;height:44px;border-radius:10px;background:#fff1e6;display:grid;place-items:center;color:var(--orange-2)}
+.vision strong{color:var(--navy)}
+.stack{position:relative}
+.stack img{border-radius:var(--radius);box-shadow:0 20px 40px rgba(19,47,84,.18)}
+.stack .b{position:absolute;width:52%;right:-18px;bottom:-40px;border:6px solid var(--paper)}
+
+/* WHY DRONES */
+.why{background:var(--card)}
+.benefits{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px;margin-top:40px}
+.benefit{padding:24px;border-radius:var(--radius);background:var(--paper);border-top:4px solid var(--orange)}
+.benefit h3{font-size:19px}
+.benefit p{font-size:16px;color:var(--muted);margin:0}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:40px}
+.duo img{border-radius:var(--radius);aspect-ratio:16/8;object-fit:cover;width:100%}
+
+/* TEAM */
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px}
+.person{background:var(--card);border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);display:flex;flex-direction:column}
+.person img{aspect-ratio:4/4;object-fit:cover;object-position:center 22%;width:100%}
+.person .body{padding:22px 24px 26px}
+.person .role{font-family:Saira,system-ui,sans-serif;font-weight:600;font-size:14px;color:var(--orange-2);letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px}
+.person ul{padding-left:18px;margin:0;font-size:16px;color:var(--muted)}
+.person li{margin-bottom:6px}
+
+/* WHY US */
+.whyus{background:var(--navy);color:#e6ecf4}
+.whyus h2{color:#fff}
+.whyus .eyebrow{color:var(--amber)}
+.whyus-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:56px;align-items:center}
+.points{display:grid;gap:16px;margin-top:24px}
+.point{display:flex;gap:16px;align-items:flex-start}
+.point .n{flex:0 0 42px;height:42px;border-radius:50%;border:2px solid var(--orange);display:grid;place-items:center;font-family:Saira,system-ui,sans-serif;font-weight:700;color:var(--orange)}
+.mosaic{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:200px 200px;gap:12px}
+.mosaic img{width:100%;height:100%;object-fit:cover;border-radius:12px}
+.mosaic img:first-child{grid-row:span 2}
+
+/* WINS */
+.wins-list{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin:36px 0 56px}
+.win{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px}
+.win svg{color:var(--orange);margin-bottom:10px}
+.win p{margin:0;font-size:16px}
+.feature{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-top:72px}
+.feature.flip>div:first-child{order:2}
+.feature h3{font-size:28px}
+.feature p{color:var(--muted)}
+.pics{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pics img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:10px;cursor:zoom-in}
+.pics img.wide{grid-column:span 2;aspect-ratio:16/8}
+.cap{font-size:14px;color:var(--muted);margin-top:8px}
+.gallery{columns:4 220px;column-gap:12px;margin-top:40px}
+.gallery img{width:100%;margin-bottom:12px;border-radius:10px;break-inside:avoid;cursor:zoom-in}
+
+/* BOEING */
+.boeing{background:linear-gradient(180deg,#fff 0%,var(--paper) 100%)}
+.banner{border-radius:18px;overflow:hidden;position:relative;margin-top:36px}
+.banner img{width:100%;aspect-ratio:21/9;object-fit:cover}
+.banner .badge{position:absolute;left:20px;bottom:20px;background:var(--orange);color:#fff;font-family:Saira,system-ui,sans-serif;font-weight:700;padding:8px 16px;border-radius:999px;font-size:15px}
+.story{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px}
+.story p{font-size:17px;color:var(--muted)}
+.story h3{font-size:20px}
+.kalam{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:start;margin-top:64px;background:var(--navy);color:#e6ecf4;border-radius:20px;padding:40px}
+.kalam h3{color:#fff;font-size:30px}
+.kalam img{border-radius:12px;background:#fff}
+table{width:100%;border-collapse:collapse;font-size:16px;margin-top:12px}
+td{padding:9px 0;border-bottom:1px solid rgba(255,255,255,.14)}
+td:last-child{text-align:right;font-family:Saira,system-ui,sans-serif;font-weight:600;color:var(--amber)}
+
+/* VIDEOS */
+.videos{display:grid;grid-template-columns:2fr 1fr 1fr;gap:16px;margin-top:36px;align-items:start}
+.vid{background:#000;border-radius:14px;overflow:hidden}
+.vid video{width:100%;height:auto;background:#000}
+.vid figcaption{background:var(--card);padding:10px 14px;font-weight:600;font-size:15px;color:var(--navy);border:1px solid var(--line);border-top:0;border-radius:0 0 14px 14px}
+figure{margin:0}
+
+/* OFFERINGS */
+.offer-hero{display:grid;grid-template-columns:1fr 1fr;gap:48px;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:40px;margin-top:40px}
+.checks{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.checks li{padding-left:30px;position:relative}
+.checks li::before{content:"";position:absolute;left:0;top:7px;width:18px;height:18px;border-radius:50%;background:var(--orange) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5L20 7'/%3E%3C/svg%3E") center/12px no-repeat}
+.courses{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+.course{background:var(--card);border-radius:18px;overflow:hidden;border:1px solid var(--line);display:flex;flex-direction:column}
+.course>img{aspect-ratio:16/10;object-fit:cover;width:100%}
+.course .body{padding:24px;display:flex;flex-direction:column;flex:1}
+.level{display:inline-block;font-family:Saira,system-ui,sans-serif;font-weight:700;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--orange-2);margin-bottom:6px}
+.course h3{font-size:26px}
+.course h4{font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);margin:18px 0 8px}
+.course ul{padding-left:18px;margin:0;font-size:16px;color:var(--muted)}
+.course p{font-size:16px;color:var(--muted)}
+details{margin-top:auto;padding-top:16px;border-top:1px solid var(--line)}
+summary{cursor:pointer;font-weight:700;color:var(--navy);font-size:16px}
+details[open] summary{margin-bottom:6px}
+
+/* CONTACT */
+.contact{background:linear-gradient(120deg,var(--navy-2),var(--navy) 55%,#7a4a2c);color:#fff;text-align:center}
+.contact h2{color:#fff}
+.contact .lede{color:#cfd9e7;margin:0 auto 34px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:900px;margin:0 auto}
+.ccard{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:14px;padding:22px;text-decoration:none;display:block}
+.ccard:hover{background:rgba(255,255,255,.12)}
+.ccard small{display:block;font-family:Saira,system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;font-size:13px;color:var(--amber);margin-bottom:6px}
+.ccard span{font-weight:600;font-size:17px;word-break:break-word}
+footer{background:var(--navy-2);color:#93a3ba;font-size:15px;padding:28px 0}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+
+/* LIGHTBOX */
+.lb{position:fixed;inset:0;background:rgba(6,14,28,.92);display:none;align-items:center;justify-content:center;z-index:100;padding:24px;cursor:zoom-out}
+.lb.on{display:flex}
+.lb img{max-height:90vh;max-width:94vw;border-radius:10px}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+
+@media (max-width:980px){
+  .nav ul{display:none;position:absolute;top:68px;left:0;right:0;background:var(--paper);flex-direction:column;padding:16px 24px;gap:14px;border-bottom:1px solid var(--line)}
+  .nav ul.open{display:flex}
+  .menu-btn{display:block}
+  .nav .btn{display:none}
+  .about-grid,.whyus-grid,.feature,.offer-hero,.kalam{grid-template-columns:1fr;gap:36px}
+  .feature.flip>div:first-child{order:0}
+  .team-grid,.courses,.story{grid-template-columns:1fr}
+  .wins-list{grid-template-columns:1fr 1fr}
+  .stats .wrap{grid-template-columns:1fr 1fr}
+  .stat:nth-child(3){border-left:0}
+  .videos{grid-template-columns:1fr 1fr}
+  .videos figure:first-child{grid-column:span 2}
+  .cards{grid-template-columns:1fr}
+  .stack .b{display:none}
+  .person img{aspect-ratio:4/3}
+  section{padding:72px 0}
+}
+@media (max-width:560px){
+  .stat b{font-size:28px}
+  .stat{padding:22px 16px}
+  .wins-list,.duo{grid-template-columns:1fr}
+  .kalam{padding:26px}
+  .mosaic{grid-template-rows:150px 150px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top"><img src="img/s01_0.jpg" alt="The Wind Labs logo"><b>THE WIND LABS</b></a>
+    <ul id="menu">
+      <li><a href="#about">About</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#wins">Our Wins</a></li>
+      <li><a href="#boeing">Boeing–IIT Madras</a></li>
+      <li><a href="#offerings">Courses</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="btn btn-primary" href="#contact">Enquire now</a>
+    <button class="menu-btn" aria-label="Menu" onclick="document.getElementById('menu').classList.toggle('open')">☰</button>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <img src="img/s13_1.jpg" alt="Instructor flying an RC aircraft with students on a field">
+  <svg class="contrail" viewBox="0 0 400 200" fill="none" stroke="#fff" stroke-width="2"><path d="M0 170 C120 150 220 90 400 20"/><path d="M0 186 C130 166 230 106 400 36" stroke-dasharray="6 10"/></svg>
+  <div class="wrap">
+    <div class="tag">Where innovation takes flight</div>
+    <h1>THE WIND <span>LABS</span></h1>
+    <p>Hands-on aeromodelling and drone training for the next generation of innovators — from a first chuck glider to building, flying and understanding real UAVs.</p>
+    <div class="ctas">
+      <a class="btn btn-primary" href="#offerings">Explore courses</a>
+      <a class="btn btn-ghost" href="#boeing">See our students fly</a>
+    </div>
+  </div>
+</header>
+
+<div class="stats">
+  <div class="wrap">
+    <div class="stat"><b>500+</b><span>enthusiasts trained &amp; coached</span></div>
+    <div class="stat"><b>20+ yrs</b><span>trainer experience in aeronautics &amp; wind energy</span></div>
+    <div class="stat"><b>2022</b><span>founded by two aviation enthusiasts</span></div>
+    <div class="stat"><b>In service</b><span>drones designed &amp; developed for defence</span></div>
+  </div>
+</div>
+
+<section id="about">
+  <div class="wrap about-grid">
+    <div class="rv">
+      <div class="eyebrow">Who we are</div>
+      <h2>Training the innovators who will shape aviation's future</h2>
+      <p class="lede">Founded by two aviation enthusiasts in 2022, our vision is to pioneer the future of aviation and drone technology — training the next generation of innovators, expanding the applications of drones across industries, and equipping future leaders with the skills to shape a smarter, safer and more connected world.</p>
+      <div class="vision">
+        <ul>
+          <li><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg></div><div><strong>“Catch them young.”</strong> Inspiring young learners with structured, hands-on courses in aeromodelling and drone technology.</div></li>
+          <li><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19h16M6 15l4-9 4 6 4-4"/></svg></div><div><strong>Specialised programmes.</strong> Customised courses across different domains of drone technology to make learners future-ready.</div></li>
+          <li><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 16l20-8-6 12-3-5-5 3z"/></svg></div><div><strong>Airshows &amp; contests.</strong> High-impact airshows, aero demonstrations and competitions.</div></li>
+          <li><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="18" r="3"/><rect x="9" y="9" width="6" height="6" rx="1"/></svg></div><div><strong>Drone solutions.</strong> Agricultural, defence and commercial applications using drones.</div></li>
+        </ul>
+      </div>
+    </div>
+    <div class="stack rv">
+      <img src="img/s09_0.jpg" alt="The Wind Labs team with a model aircraft">
+      <img class="b" src="img/s10_1.jpg" alt="Fixed-wing drone built by the team">
+    </div>
+  </div>
+</section>
+
+<section class="why" id="why">
+  <div class="wrap">
+    <div class="rv">
+      <div class="eyebrow">Why aeromodelling &amp; drones</div>
+      <h2>More than a hobby — a workout for hands and mind</h2>
+      <p class="lede">Building and flying aircraft is known to improve hand–eye coordination, fine motor skills, spatial awareness and precise control — crucial for both manual dexterity and cognitive processing.</p>
+    </div>
+    <div class="benefits">
+      <div class="benefit rv"><h3>Flight control</h3><p>Flying RC planes or drones demands real-time adjustments, sharpening reaction speed and coordination.</p></div>
+      <div class="benefit rv"><h3>Problem-solving under pressure</h3><p>Quick mid-flight corrections build decision-making, creativity and spatial awareness.</p></div>
+      <div class="benefit rv"><h3>Simulator training</h3><p>Practice on flight simulators builds muscle memory and reflexes that carry into real-world piloting.</p></div>
+      <div class="benefit rv"><h3>Practical engineering</h3><p>Mechanics, electronics and material science in one project — ideal for aspiring STEM enthusiasts.</p></div>
+    </div>
+    <div class="duo rv">
+      <img src="img/s08_0.jpg" alt="Young students holding their model aircraft">
+      <img src="img/s08_1.jpg" alt="Children practising on a flight simulator with an RC transmitter">
+    </div>
+  </div>
+</section>
+
+<section id="team">
+  <div class="wrap">
+    <div class="rv">
+      <div class="eyebrow">Our team</div>
+      <h2>Aviators, engineers and a naval veteran</h2>
+      <p class="lede">Real-world experience across aviation, automobile and defence — brought into every workshop.</p>
+    </div>
+    <div class="team-grid">
+      <article class="person rv">
+        <img src="img/s05_0.jpg" alt="Vibhu Narain Mathur in an aircraft cockpit">
+        <div class="body">
+          <h3>Vibhu Narain Mathur</h3>
+          <div class="role">Aeronautical engineer · Lead instructor</div>
+          <ul>
+            <li>Aviation enthusiast and aeronautical engineer with 20+ years in aviation and wind technology.</li>
+            <li>Worked with leading global R&amp;D establishments — Pratt &amp; Whitney (GP7000 engines for the Airbus A380) and Vestas Wind R&amp;D. Currently with KLA in the semiconductor industry.</li>
+            <li>Former Aircraft Maintenance Engineer on the Cessna 172 and 152, keeping aircraft airworthy and fit to fly.</li>
+            <li>Flies aeroplanes, builds aero-models and drones, and has set up centres of excellence in aeromodelling and flight simulation, including at BIT Mesra, Ranchi.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="person rv">
+        <img src="img/s06_0.jpg" alt="Vikram Mathur">
+        <div class="body">
+          <h3>Vikram Mathur</h3>
+          <div class="role">Strategy · Go-to-market</div>
+          <ul>
+            <li>23+ years in the automobile sector with Ford Motors and Honda, managing APAC, MEA, ASEAN and India.</li>
+            <li>Indian School of Business (ISB) alumnus; ICF Coach (Level 1, pursuing).</li>
+            <li>Specialises in marketing, sales, service, strategy, network development, L&amp;D, digital transformation, organisation development and consumer experience.</li>
+            <li>Advises stealth start-ups and MNCs on GTM and commercialisation, and manages a large programme for a French multinational in aerospace.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="person rv">
+        <img src="img/s07_0.jpg" alt="S. K. Maharana">
+        <div class="body">
+          <h3>S. K. Maharana</h3>
+          <div class="role">Indian Navy veteran · UAV developer</div>
+          <ul>
+            <li>Indian Navy veteran specialising in underwater robotic vehicles, advanced weapon systems, mine countermeasures and maritime security.</li>
+            <li>10 years of UAV development — designed and built small and medium multicopters and fixed-wing drones.</li>
+            <li>Expertise in aerodynamics, propulsion systems and remote-controlled UAVs.</li>
+            <li>Designed commercial, agricultural and logistics multicopters using advanced open- and closed-source flight controllers.</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="whyus">
+  <div class="wrap whyus-grid">
+    <div class="rv">
+      <div class="eyebrow">Why us</div>
+      <h2>Experience you can fly with</h2>
+      <div class="points">
+        <div class="point"><div class="n">1</div><div>Trainers with over two decades of experience in aeronautics and wind energy.</div></div>
+        <div class="point"><div class="n">2</div><div>Structured yet customised courses for every level.</div></div>
+        <div class="point"><div class="n">3</div><div>More than 500 enthusiasts trained and coached.</div></div>
+        <div class="point"><div class="n">4</div><div>Real-world experience across aviation, automobile and defence.</div></div>
+      </div>
+    </div>
+    <div class="mosaic rv">
+      <img src="img/s09_1.jpg" alt="Team member with a light aircraft in a hangar">
+      <img src="img/s09_2.jpg" alt="Team members exchanging a memento">
+      <img src="img/s10_0.jpg" alt="Multirotor drone with ground control station">
+    </div>
+  </div>
+</section>
+
+<section id="wins">
+  <div class="wrap">
+    <div class="rv">
+      <div class="eyebrow">Our wins</div>
+      <h2>From classrooms to ISRO demonstrations</h2>
+    </div>
+    <div class="wins-list">
+      <div class="win rv"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg><p>Workshops for <strong>500+ enthusiasts</strong>, from primary-school kids to budding aviators.</p></div>
+      <div class="win rv"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><p>Drones <strong>designed and developed for defence</strong> — now in service.</p></div>
+      <div class="win rv"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 16l20-8-6 12-3-5-5 3z"/></svg><p>Airshows for scientists from <strong>HAL, DRDO</strong> and other distinguished professionals.</p></div>
+      <div class="win rv"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/></svg><p>Aviation <strong>labs and departments</strong> established for prestigious institutes.</p></div>
+    </div>
+
+    <div class="feature">
+      <div class="rv">
+        <div class="eyebrow">Lab setup</div>
+        <h3>Aeromodelling lab at BIT Mesra, Ranchi</h3>
+        <p>The Wind Labs team set up the aeromodelling and flight-simulation lab at BIT Ranchi. We also help institutions and corporates set up their own flight-simulator labs.</p>
+      </div>
+      <div class="pics rv">
+        <img class="wide" src="img/s11_0.jpg" alt="Flight simulator station at BIT Ranchi">
+        <img src="img/s11_1.jpg" alt="Cockpit simulator setup">
+        <img src="img/s11_2.jpg" alt="Simulator workstation">
+      </div>
+    </div>
+
+    <div class="feature flip">
+      <div class="rv">
+        <div class="eyebrow">Flight demonstration</div>
+        <h3>Drone flying at the Annual AeSI CFD Symposium, BIT Ranchi</h3>
+        <p>Small, lightweight UAVs built by students of BIT Mesra were test-flown in the presence of ISRO Chairman Dr S. Somanath and scientists from HAL and ISRO, under the guidance of Vibhu Mathur.</p>
+      </div>
+      <div class="rv">
+        <div class="pics">
+          <img src="img/s12_0.jpg" alt="Team with ISRO Chairman Dr Somanath">
+          <img src="img/s13_0.jpg" alt="With the ISRO Chairman" style="object-position:center 20%">
+          <img class="wide" src="img/s12_1.jpg" alt="Flight demonstration for HAL and ISRO scientists">
+        </div>
+        <div class="cap">With the ISRO Chairman · Flight demonstration for scientists of HAL and ISRO</div>
+      </div>
+    </div>
+
+    <div class="rv" style="margin-top:72px">
+      <div class="eyebrow">Live sessions</div>
+      <h3 style="font-size:28px">Moments from our workshops</h3>
+    </div>
+    <div class="gallery rv">
+      <img src="img/s13_2.jpg" alt="Workshop session in an auditorium">
+      <img src="img/s10_2.jpg" alt="Group photo with defence personnel and students">
+      <img src="img/s13_3.jpg" alt="Faculty and students with a model aircraft">
+      <img src="img/s10_3.jpg" alt="Outdoor flying session">
+      <img src="img/s13_4.jpg" alt="Students at an aerospace engineering hangar">
+      <img src="img/s13_1.jpg" alt="Instructor flying an RC plane with students">
+      <img src="img/s23_1.jpg" alt="Students building gliders in a workshop">
+      <img src="img/s10_1.jpg" alt="Fixed-wing drone">
+    </div>
+  </div>
+</section>
+
+<section class="boeing" id="boeing">
+  <div class="wrap">
+    <div class="rv">
+      <div class="eyebrow">Student success story</div>
+      <h2>Boeing National Aeromodelling Competition at IIT Madras</h2>
+      <p class="lede">Students from Gateway The Complete School took part in the Boeing National Aeromodelling Competition hosted at IIT Madras, coordinated by The Wind Labs. They designed, built and successfully flew an RC aircraft under the mentorship of our team, led by instructor Vibhu Mathur.</p>
+    </div>
+    <div class="banner rv">
+      <img src="img/s14_0.jpg" alt="Students with their aircraft at the Boeing National Aeromodelling Competition 2025–26">
+      <div class="badge">Boeing National Aeromodelling Competition 2025–26</div>
+    </div>
+    <div class="story">
+      <div class="rv">
+        <h3>Engineering in action</h3>
+        <p>Building on our aeromodelling workshop at Gateway The Complete School, four students took their learning to a national platform — conceptualising, designing and building a fully functional RC aircraft to competition norms.</p>
+      </div>
+      <div class="rv">
+        <h3>The youngest team on the field</h3>
+        <p>Arguably the youngest team in the competition, they presented and flew their aircraft with confidence alongside IIT students — without a sign of nerves — earning awe and appreciation from everyone present.</p>
+      </div>
+      <div class="rv">
+        <h3>Real competition discipline</h3>
+        <p>At IIT Madras the students experienced pre-flight checks, calibration and strict safety and performance protocols, amid large-scale participation from institutions across India.</p>
+      </div>
+    </div>
+
+    <div class="pics rv" style="margin-top:36px;grid-template-columns:1fr 1fr">
+      <img src="img/s16_0.jpg" alt="Students building their RC aircraft">
+      <img src="img/s19_0.jpg" alt="Competition arena with aircraft from teams across India">
+    </div>
+
+    <div class="kalam rv">
+      <div>
+        <div class="eyebrow">A student build</div>
+        <h3>Aircraft ‘KALAM’</h3>
+        <p>Named for the students' inspiration, KALAM reflects their understanding of design, balance and flight mechanics. It is powered by a 12-volt motor.</p>
+        <img src="img/s17_0.jpg" alt="Close-up of the KALAM RC aircraft and its components" style="margin-top:20px">
+      </div>
+      <div>
+        <h4 style="color:#fff;font-size:18px;margin-top:6px">Specifications</h4>
+        <table>
+          <tr><td>Wingspan (b)</td><td>990 mm</td></tr>
+          <tr><td>Wing chord (root &amp; mean)</td><td>160 mm</td></tr>
+          <tr><td>Fuselage length (nose to tail)</td><td>660 mm</td></tr>
+          <tr><td>Horizontal tailplane</td><td>330 × 85 mm</td></tr>
+          <tr><td>Vertical tail height</td><td>180 mm</td></tr>
+          <tr><td>Aileron span (each)</td><td>275 mm</td></tr>
+          <tr><td>Aileron chord</td><td>15.5 mm</td></tr>
+          <tr><td>Empty (dry) mass</td><td>670 g</td></tr>
+          <tr><td>Operational payload</td><td>230 g (5 × 46 g golf balls)</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="rv" style="margin-top:72px">
+      <div class="eyebrow">Watch</div>
+      <h3 style="font-size:28px">Team in action &amp; parents' feedback</h3>
+    </div>
+    <div class="videos">
+      <figure class="rv"><div class="vid"><video controls preload="none" playsinline poster="img/image29.jpg" src="video/media1.mp4"></video></div><figcaption>Flying at the competition</figcaption></figure>
+      <figure class="rv"><div class="vid"><video controls preload="none" playsinline poster="img/image30.jpg" src="video/media2.mp4"></video></div><figcaption>Parents' feedback</figcaption></figure>
+      <figure class="rv"><div class="vid"><video controls preload="none" playsinline poster="img/image31.jpg" src="video/media3.mp4"></video></div><figcaption>Parents' feedback</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section id="offerings">
+  <div class="wrap">
+    <div class="rv">
+      <div class="eyebrow">Our offerings</div>
+      <h2>Courses and turnkey labs</h2>
+      <p class="lede">A clear learning path — from a first glider to motorised multirotors and fixed-wing RC planes — plus complete workshop setups for institutions.</p>
+    </div>
+
+    <div class="offer-hero rv">
+      <div>
+        <h3 style="font-size:28px">Aeronautics workshop setup</h3>
+        <p style="color:var(--muted)">We set up aeronautics workshops and STEM labs in schools, colleges and organisations on a turnkey basis — and help your representatives take part in regional and national competitions.</p>
+        <a class="btn btn-primary" href="#contact" style="margin-top:8px">Plan a lab</a>
+      </div>
+      <ul class="checks">
+        <li>All tools, equipment, consumables and instruments</li>
+        <li>Workshop layout and flow</li>
+        <li>All raw material required</li>
+        <li>Flight simulators</li>
+        <li>Training and coaching</li>
+        <li>Flying lessons</li>
+      </ul>
+    </div>
+
+    <div class="courses">
+      <article class="course rv">
+        <img src="img/s23_0.jpg" alt="Balsa chuck glider held up for launch">
+        <div class="body">
+          <span class="level">Level 1 · Starter</span>
+          <h3>Chuck Gliders</h3>
+          <p>An entry-level introductory course for budding aviation enthusiasts.</p>
+          <h4>What it covers</h4>
+          <ul>
+            <li>Introduction to aeromodelling</li>
+            <li>Theory of flight</li>
+            <li>Chuck glider construction and flying</li>
+            <li>Starter course for aeromodelling and flying</li>
+          </ul>
+        </div>
+      </article>
+      <article class="course rv">
+        <img src="img/s24_0.jpg" alt="Quadcopter in flight (representative image)">
+        <div class="body">
+          <span class="level">Level 2 · Motorised</span>
+          <h3>Multirotors</h3>
+          <p>Introduces the concept, operations and applications of a quadcopter — and the participants' first motorised aircraft.</p>
+          <h4>What you'll learn</h4>
+          <ul>
+            <li>Design, structure and flight dynamics, and how they differ from fixed-wing aircraft</li>
+            <li>Electronics, sensors and mission planner software</li>
+            <li>Hovering and stabilisation in practice</li>
+            <li>Regulatory and compliance guidelines</li>
+            <li>Applications in defence and career opportunities</li>
+          </ul>
+          <details>
+            <summary>Outcome</summary>
+            <p>On certification, participants can identify, design, select components for and assemble multirotors in-house to suit project or mission parameters. This unit also introduces AI modules in drones.</p>
+          </details>
+        </div>
+      </article>
+      <article class="course rv">
+        <img src="img/s25_0.jpg" alt="Electric RC plane with transmitter (representative image)">
+        <div class="body">
+          <span class="level">Level 3 · Fixed-wing</span>
+          <h3>RC Planes</h3>
+          <p>Electric-powered fixed-wing flight — the stepping stone to advanced drone technologies.</p>
+          <h4>What you'll learn</h4>
+          <ul>
+            <li>Electric propulsion systems and basic avionics</li>
+            <li>Control surfaces</li>
+            <li>Communication basics, including pairing and calibration</li>
+            <li>Battery management</li>
+            <li>Safety rules and regulations (as per DGCA)</li>
+            <li>Basic flight training</li>
+            <li>Applications in defence and career opportunities</li>
+          </ul>
+          <details>
+            <summary>Outcome</summary>
+            <p>On certification, participants can assemble a basic RC fixed-wing aircraft, maintain it and test-fly it with instructors. Flying solo requires further training and practice — and opens opportunities in defence, industrial and commercial work.</p>
+          </details>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="eyebrow" style="justify-content:center;color:var(--amber)">Get in touch</div>
+    <h2>Ready to take flight?</h2>
+    <p class="lede">Workshops for schools, courses for young innovators, or a turnkey lab for your institution — let's talk.</p>
+    <div class="cards">
+      <a class="ccard" href="mailto:contactus@thewindlabs.in"><small>Email</small><span>contactus@thewindlabs.in</span></a>
+      <a class="ccard" href="https://wa.me/919940639170"><small>Mobile / WhatsApp</small><span>+91 99406 39170<br>+91 99991 02120</span></a>
+      <a class="ccard" href="https://www.thewindlabs.in"><small>Website</small><span>www.thewindlabs.in</span></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© The Wind Labs · Where innovation takes flight</span>
+    <span>Aeromodelling · Drones · Flight simulation · STEM labs</span>
+  </div>
+</footer>
+
+<div class="lb" id="lb" onclick="this.classList.remove('on')"><img alt=""></div>
+
+<script>
+// Lightbox for gallery and photo grids
+const lb=document.getElementById('lb'), lbImg=lb.querySelector('img');
+document.querySelectorAll('.gallery img, .pics img').forEach(i=>i.addEventListener('click',()=>{lbImg.src=i.src;lbImg.alt=i.alt;lb.classList.add('on')}));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')lb.classList.remove('on')});
+// Close mobile menu on link click
+document.querySelectorAll('#menu a').forEach(a=>a.addEventListener('click',()=>document.getElementById('menu').classList.remove('open')));
+// Reveal on scroll
+try{
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+  document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+}catch(e){document.querySelectorAll('.rv').forEach(el=>el.classList.add('in'))}
+</script>
+</body>
+</html>
